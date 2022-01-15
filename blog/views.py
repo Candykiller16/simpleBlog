@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 # ListView встроенный класс в django, позволяющий просматривать все записи в нашем посте, т.е. делается QuerySet в БД
 # для отображения всех записей из таблицы, а DetailView для просмотра только одной записи из одной таблицы
+# ListView  - all Posts on our page
+# Detail View - one Post on our page
+# CreateView = creates things
 from .models import Post
 
 # def home(request):
@@ -14,3 +17,10 @@ class HomeView(ListView): # view для отображения данных на
 class ArticleDetailView(DetailView):
     model = Post
     template_name = 'article_details.html'
+
+class AddPostView(CreateView):
+    model = Post
+    template_name = 'add_post.html'
+    fields = '__all__' # если ходим все поля заполнять при добавлении поста
+    #fields = ('title', 'body') # для заполнения только определенных полей при добавлении поста
+
