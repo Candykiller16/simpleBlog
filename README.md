@@ -52,4 +52,19 @@ Commit 11:
 1. Добавлено поле post_date в модель Post
 2. В article_details.html добавлено отображение даты
 3. В HomeView добавлено ordering с -post_date т.е. самый поздний пост будет вначале
-4. 
+
+Commit 12:
+1. Добавлено новое приложение members, в котором будет реализовано возможность регистрации новых пользователей для блога
+2. В members создан файл urls.py
+3. В core/setting.py в INSTALLED_APPS зарегситрировали наше приложение members
+4. В core/urls.py подключили Django authentication system и app members
+5. В members создали urls.py
+6. В members создана папка templates/registration в которой созд. файлы login.html and register.html в которой 
+будут формы для входа и регистрации
+7. В members/views созд. UserRegisterView для регистрации пользователей исп. CreateView из библиотеки generic
+8. В navbar в base.html создали ссылку на регистрацию register 
+9. В navbar в base.html создали ссылку на вход login, но нам не надо её прописывать в members/urls.py т.к. в core/urls.py
+мы подключили django.contrib.auth.urls, а login входит в пакет urls
+10. В core/settings.py прописали LOGIN_REDIRECT_URL и LOGOUT_REDIRECT_URL, чтобы после входа нас перенаправляли на главную страницу
+
+

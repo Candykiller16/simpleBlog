@@ -19,4 +19,8 @@ from django.urls import path, include # Функция include() позволя�
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    path('members/', include('django.contrib.auth.urls')), # Подключение Django authentication system пакет urls которые будут
+    # управлять регистрацией, входом и т.д.
+    path('members/', include('members.urls')), # Django authentication system увидет иной функционал помимо urls, он будет
+    # использовать функционал из нашего приложения members в urls.py
 ]
