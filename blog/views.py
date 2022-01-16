@@ -6,7 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 # Detail View - one Post on our page
 # CreateView = creates things
 # UpdateView - update things
-from .models import Post
+from .models import Post, Category
 
 from .forms import PostForm, EditForm
 
@@ -44,4 +44,9 @@ class DeletePostView(DeleteView):
     success_url = reverse_lazy('home')
     # в models.py был прописан get_absolute_url для перенаправления после созд. и удаления поста
     # но это не работает при удалении поста, для этого надо указать success_url
+
+class AddCategotyView(CreateView):
+    model = Category
+    template_name = 'add_category.html'
+    fields = '__all__'
 

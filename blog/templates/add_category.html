@@ -1,0 +1,21 @@
+{% extends 'base.html' %} <!-- наследование от 'base.html' -->
+{% block title %}Create a new Blog Category!{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h1>Add Category...</h1>
+    <br/><br/>
+    <div class="mb-3">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p}} <!-- каждая форма в для заполнения будет как тэг <p>-->
+            <button class="btn btn-primary">Add Category</button>
+    </div>
+
+{% else %}
+
+You are not allowed here. Please LogIn or Register
+
+{% endif %}
+
+{% endblock %}

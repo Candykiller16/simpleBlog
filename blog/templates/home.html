@@ -5,6 +5,7 @@
 <h1>Post</h1>
 {% for post in object_list %} <!--цикл для отображения всех записей из QuerySet(запроса в БД) -->
     <ul><a href='{% url "article_detail" post.pk %}'>{{ post.title }}</a>
+    - {{post.category}}
     - {{ post.author.first_name }} <!-- обащение по url через name -->
      {{ post.author.last_name }}<!--first_name, last_name, email это столбцы БД admin -->
      - {{post.post_date}}
@@ -15,7 +16,7 @@
         </small>
      {% endif %}
      <br>
-    {{ post.body |slice:"200" }}</ul> <!-- Ограничение для 200 символов -->
+    {{ post.body |slice:"200"|safe }}</ul> <!-- Ограничение для 200 символов -->
     <br>
 
 {% endfor %}
