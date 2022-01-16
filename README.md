@@ -34,3 +34,9 @@ Commit 7:
 Commit 8:
 1. Добавлен файл blog/forms.py для создания формы заполнения в Add Post, т.к. Django tag {{from.as_p}} нам не подходит
 2. Связал форму с моделью Post в blog/views.py
+
+Commit 9:
+1. Создан update_post.html для станицы с редактированием поста
+2. Добавлена view для редактирования поста UpdatePostView
+3. В home.html and article_details.html добавлена ссылка для изменения поста
+4. Создана EditForm для того, чтобы изменять не все поля при редактировании поста

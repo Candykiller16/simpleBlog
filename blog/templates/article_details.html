@@ -5,7 +5,9 @@
 {% block content %}
 
 <h1>{{ post.title }}</h1> <!-- Цикл for здесь не исп. т.к. мы исп. view DetaiView, а на главной страницы список из постов ListView -->
-<small> By: {{post.author.first_name}} {{post.author.last_name}} </small> <br/>
+    <small> By: {{post.author.first_name}} {{post.author.last_name}} -
+        <a href="{% url 'update_post' post.pk %}">(Edit)</a>
+    </small> <br/>
 <hr>
 <br/>
 {{post.body}}

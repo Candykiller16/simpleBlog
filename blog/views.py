@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 # ListView встроенный класс в django, позволяющий просматривать все записи в нашем посте, т.е. делается QuerySet в БД
 # для отображения всех записей из таблицы, а DetailView для просмотра только одной записи из одной таблицы
 # ListView  - all Posts on our page
 # Detail View - one Post on our page
 # CreateView = creates things
+# UpdateView - update things
 from .models import Post
 
-from .forms import PostForm
+from .forms import PostForm, EditForm
 
 # def home(request):
 #     return render(request, 'home.html', {})
@@ -26,4 +27,10 @@ class AddPostView(CreateView):
     template_name = 'add_post.html'
    #fields = '__all__' # если ходим все поля заполнять при добавлении поста
     #fields = ('title', 'body') # для заполнения только определенных полей при добавлении поста
+
+class UpdatePostView(UpdateView):
+    model = Post
+    form_class = EditForm
+    template_name = 'update_post.html'
+    # Нельзя использовать form_class и fields одновременно.
 
