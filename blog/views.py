@@ -7,6 +7,8 @@ from django.views.generic import ListView, DetailView, CreateView
 # CreateView = creates things
 from .models import Post
 
+from .forms import PostForm
+
 # def home(request):
 #     return render(request, 'home.html', {})
 
@@ -20,7 +22,8 @@ class ArticleDetailView(DetailView):
 
 class AddPostView(CreateView):
     model = Post
+    form_class = PostForm # Если мы исп. форму для заполнения, то поля во fields не надо прописывать
     template_name = 'add_post.html'
-    fields = '__all__' # если ходим все поля заполнять при добавлении поста
+   #fields = '__all__' # если ходим все поля заполнять при добавлении поста
     #fields = ('title', 'body') # для заполнения только определенных полей при добавлении поста
 
