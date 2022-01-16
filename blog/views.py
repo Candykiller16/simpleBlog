@@ -50,3 +50,9 @@ class AddCategotyView(CreateView):
     template_name = 'add_category.html'
     fields = '__all__'
 
+def CategoryView(request, categories):
+    category_posts = Post.objects.filter(category=categories.title()) # в фильтре category- это поле в таблице Post,
+    # categories - параметр функции. replace заменяет - в url адресе на пробел, чтобы мы могли увидеть категорию сост. из 2-ух слов
+    return render(request, 'categories.html', {'categories':categories.title(), 'category_posts': category_posts})
+
+

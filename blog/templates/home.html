@@ -5,7 +5,8 @@
 <h1>Post</h1>
 {% for post in object_list %} <!--цикл для отображения всех записей из QuerySet(запроса в БД) -->
     <ul><a href='{% url "article_detail" post.pk %}'>{{ post.title }}</a>
-    - {{post.category}}
+    - <a href="{% url 'category' post.category %} ">{{ post.category }}</a> <!-- Ссылка для категорий, при нажатии на
+     определенную категорию срабатывает фильтр и выводятся посты для опреденной категории-->
     - {{ post.author.first_name }} <!-- обащение по url через name -->
      {{ post.author.last_name }}<!--first_name, last_name, email это столбцы БД admin -->
      - {{post.post_date}}

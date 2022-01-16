@@ -1,0 +1,28 @@
+{% extends 'base.html' %} <!-- наследование от 'base.html' -->
+
+{% block content %}
+    <h1>{{categories}}</h1>
+
+{% if category_posts %}
+    {% for post in category_posts %}
+            <ul><a href='{% url "article_detail" post.pk %}'>{{ post.title }}</a>
+        - {{ post.author.first_name }} <!-- обащение по url через name -->
+         {{ post.author.last_name }}<!--first_name, last_name, email это столбцы БД admin -->
+         - {{post.post_date}}
+         {% if user.is_authenticated %}
+         - <small>
+            <a href="{% url 'update_post' post.pk %}">(Edit)</a><!--Ссылка для редактирования поста -->
+            <a href="{% url 'delete_post' post.pk %}">(Delete)</a><!--Ссылка для удаления поста -->
+            </small>
+         {% endif %}
+         <br>
+        {{ post.body |slice:"200"|safe }}</ul> <!-- Ограничение для 200 символов -->
+        <br>
+    {% endfor %}
+
+{% else %}
+Sorry, this categoty does not exist
+
+{% endif %}
+
+{% endblock %}
