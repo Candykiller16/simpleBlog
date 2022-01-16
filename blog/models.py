@@ -4,11 +4,14 @@ from django.contrib.auth.models import User
 
 from django.urls import reverse
 
+from datetime import datetime, date
+
 class Post(models.Model):
     title = models.CharField(max_length=255) # title Поста, текстовый формат с максимальной длиной 255 символов
     title_tag = models.CharField(max_length=255) # отвечает за название вкладки
     author = models.ForeignKey(User, on_delete=models.CASCADE) # внешний ключ для таблицы User, с каскадным удалением
     body = models.TextField()
+    post_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.title + ' | ' + str(self.author) # т.к. author это объект, необходимо преобразовать его в строку

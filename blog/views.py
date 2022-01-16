@@ -18,7 +18,8 @@ from django.urls import reverse_lazy
 class HomeView(ListView): # view для отображения данных на главной странице
     model = Post # прописываем модель, данные мз которой мы будем отображать
     template_name = 'home.html' # html страничка на которой это будет отображаться
-    ordering = ['-id'] # посты будут отображаться в обратном порядке сверху вниз
+    #ordering = ['-id'] # посты будут отображаться в обратном порядке сверху вниз
+    ordering = ['-post_date'] # посты отображаются по дате создания
 
 class ArticleDetailView(DetailView):
     model = Post

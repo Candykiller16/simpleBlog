@@ -4,8 +4,10 @@
 
 <h1>Post</h1>
 {% for post in object_list %} <!--цикл для отображения всех записей из QuerySet(запроса в БД) -->
-    <ul><a href='{% url "article_detail" post.pk %}'>{{ post.title }}</a> - {{ post.author.first_name }} <!-- обащение по url через name -->
+    <ul><a href='{% url "article_detail" post.pk %}'>{{ post.title }}</a>
+    - {{ post.author.first_name }} <!-- обащение по url через name -->
      {{ post.author.last_name }}<!--first_name, last_name, email это столбцы БД admin -->
+     - {{post.post_date}}
      - <small><a href="{% url 'update_post' post.pk %}">(Edit)</a></small><!--Ссылка для редактирования поста -->
      - <small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small><br> <!--Ссылка для удаления поста -->
     {{ post.body }}</ul>
