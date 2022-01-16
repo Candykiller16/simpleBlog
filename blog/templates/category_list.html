@@ -1,0 +1,12 @@
+{% extends 'base.html' %} <!-- наследование от 'base.html' -->
+
+{% block title %}Blog Categories{% endblock %} <!-- Блок в котором будет отображаться название поста в имени вкладки -->
+
+{% block content %}
+
+    <h1>Blog Categories</h1>
+
+        {% for item in cat_menu_list %} <!-- Цикл, чтобы получить данные из нашего запроса в таблицу Category -->
+            <h4><a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a></h4>
+        {% endfor %}
+{% endblock %}

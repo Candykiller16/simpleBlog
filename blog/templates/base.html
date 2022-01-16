@@ -23,7 +23,25 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Category menu код-->
+        {% if cat_menu %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
+            {% for item in cat_menu %} <!-- Цикл, чтобы получить данные из нашего запроса в таблицу Category -->
+                <li><a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a></li>
+            {% endfor %}
+
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'category_list' %}">Categories</a>
+        </li>
+        {% endif %}
         {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
@@ -34,6 +52,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
         </li>
+
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'register' %}">Register</a>
