@@ -2,13 +2,19 @@
 {% block title %}Edit Blog Post{% endblock %}
 {% block content %}
 
-<h1>Update Post...</h1>
-<br/><br/>
-<div class="mb-3">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p}} <!-- каждая форма в для заполнения будет как тэг <p>-->
-        <button class="btn btn-primary">Update</button>
-</div>
+{% if user.is_authenticated %}
+    <h1>Update Post...</h1>
+    <br/><br/>
+    <div class="mb-3">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p}} <!-- каждая форма в для заполнения будет как тэг <p>-->
+            <button class="btn btn-primary">Update</button>
+    </div>
+{% else %}
+
+You are not allowed here. Please LogIn or Register
+
+{% endif %}
 
 {% endblock %}

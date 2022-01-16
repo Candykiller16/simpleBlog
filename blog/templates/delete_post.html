@@ -2,16 +2,24 @@
 {% block title %}Delete Blog Post{% endblock %}
 {% block content %}
 
-<h1>Delete Post...</h1>
-<br/><br/>
-<h3>Delete: {{ post.title }}</h3>
+{% if user.is_authenticated %}
 
-<br/>
-<div class="mb-3">
-    <form method="POST">
-        {% csrf_token %}
-        <strong>Are you sure !?</strong><br/><br/>
-        <button class="btn btn-danger">Delete Post!</button>
-</div>
+    <h1>Delete Post...</h1>
+    <br/><br/>
+    <h3>Delete: {{ post.title }}</h3>
+
+    <br/>
+    <div class="mb-3">
+        <form method="POST">
+            {% csrf_token %}
+            <strong>Are you sure !?</strong><br/><br/>
+            <button class="btn btn-danger">Delete Post!</button>
+    </div>
+
+{% else %}
+
+You are not allowed here. Please LogIn or Register
+
+{% endif %}
 
 {% endblock %}

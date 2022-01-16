@@ -67,4 +67,14 @@ Commit 12:
 мы подключили django.contrib.auth.urls, а login входит в пакет urls
 10. В core/settings.py прописали LOGIN_REDIRECT_URL и LOGOUT_REDIRECT_URL, чтобы после входа нас перенаправляли на главную страницу
 
+Commit 13:
 
+1. В navbar в base.html создали ссылку на выход logout
+2. В base.html прописали логику при помощи тэгов django
+{% if user.is_authenticated %} - {% else %} - {% endif %}
+согласно которой если user зашел, он может добавить пост или выйти
+если же он не вошел ему предлагается регистрация или вход
+3. В home.html прописали такую же логику для Delete, Edit Post, Add Post, также и в каждом посте по отдельности
+т.е. невошедший пользователь не может редактировать 
+или удалять посты
+4. В home.html для {{ post.body |slice:"200" }} добавлено ограничение в 200 символов
